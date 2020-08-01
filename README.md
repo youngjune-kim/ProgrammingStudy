@@ -63,3 +63,17 @@ char a = 'a';
 
 Console.WriteLine(a + 1); // 98 (int로 암시적 형변환)
 ```
+
+## 입출력
+
+C#에 입력, 출력 함수가 내장이 돼있다.
+
+`위치: System.Console`
+
+C#의 입출력 함수는 `Console`이라는 묶음에 저장이 되어있고, C#에 기본적으로 포함이 돼있다.
+
+```csharp
+Console.Write("값을 입력해주세요: ");
+string str = Console.ReadLine();
+Console.WriteLine(str);
+```
