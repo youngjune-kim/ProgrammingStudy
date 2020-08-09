@@ -97,8 +97,51 @@ int[] arr = new int[3];
 int[] arr = new int[3] { 2, 4, 6 };
 ```
 
-C#의 메모리는 두개로 나뉜다. `Stack`, `Heap`
+위 코드를 그림으로 표현하면 아래와 같다.
 
-`Stack`은 일반적으로 함수나 반복문과 같이 `{ }` 안에 선언된 변수를 말한다. 이 변수들은 중괄호가 끝나면 메모리에서 삭제된다.
+![array memory architecture](./images/array1.png)
 
-`Heap`은 `new` 키워드로 생성된 메모리이다. 이 메모리는 참조하는 변수가 있지 않으면 `Garbage Collecter (GC)`가 삭제한다.
+위 그림처럼 `int[] arr`은 배열 데이터의 메모리를 가리키는 `Reference`이고, `new int[3]`으로 생성된 메모리가 실제 배열 데이터가 저장되는 곳이다.
+
+### 스택과 힙
+
+C#의 논리적 메모리는 두개로 나뉜다. `Stack`, `Heap`
+
+#### Stack
+
+`Stack`은 일반적으로 함수나 반복문과 같이 `{ }` 안에 선언된 변수를 말한다.
+이 변수들을 `지역변수`라고 한다. 중괄호가 끝나면 메모리에서 삭제된다.
+
+```csharp
+static void Main(string[] args)
+{
+	int num1 = 2;
+	int num2 = 3;
+	Console.WriteLine(num1); // 2
+	Console.WriteLine(num2); // 3
+}
+```
+
+위 코드에서 `지역변수`가 스택에 쌓였다가 삭제되는 과정을 그림으로 표현하면 아래와 같다.
+
+![stack memory architecture](./images/stack1.png)
+
+#### Heap
+
+`Heap`은 `new` 키워드로 생성된 메모리이다. 이 메모리는 참조하는 변수가 있지 않으면 `Garbage Collector (GC)`가 삭제한다.
+
+```csharp
+static void Main(string[] args)
+{
+	int[] arr = new int[3];
+	arr[0] = 2;
+	arr[1] = 4;
+	arr[2] = 6;
+
+	Console.WriteLine(String.Format("첫번째: {0}, 두번째: {1}, 세번째: {2}", arr[0], arr[1], arr[2]));
+}
+```
+
+위 코드에서 `new` 키워드로 생성한 메모리를 참조하는 `Reference`가 더이상 존재하지 않게되어 메모리에서 삭제되는 과정을 그리면 아래와 같다.
+
+![heap memory architecture](./images/heap1.png)
