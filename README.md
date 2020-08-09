@@ -145,3 +145,88 @@ static void Main(string[] args)
 위 코드에서 `new` 키워드로 생성한 메모리를 참조하는 `Reference`가 더이상 존재하지 않게되어 메모리에서 삭제되는 과정을 그리면 아래와 같다.
 
 ![heap memory architecture](./images/heap1.png)
+
+## 조건문
+
+C#의 조건문은 `if`와 `switch` 구문으로 사용할 수 있다.
+
+### if
+
+`if`를 이용하여 분기처리하는 코드는 아래와 같다.
+
+```csharp
+/**
+ * if (<condition>)
+ * {
+ *     ...
+ * }
+ * else if (<condition>)
+ * {
+ *     ...
+ * }
+ * else
+ * {
+ *     ...
+ * }
+ */
+
+int num = 10;
+if (num > 10) // false
+{
+	Console.WriteLine("num은 10보다 큽니다.");
+}
+else if (num == 10) // true
+{
+    Console.WriteLine("num은 10입니다.");
+}
+else
+{
+	Console.WriteLine("num은 10보다 작습니다.");
+}
+```
+
+위 코드를 그림으로 표현하면 아래와 같다.
+
+![if flowchart](./images/if1.png)
+
+### switch
+
+`switch`를 이용하여 분기처리하는 코드는 아래와 같다.
+
+```csharp
+/**
+ * switch (<value>)
+ * {
+ * case <condition>:
+ *     ...
+ *     break;
+ * case <condition>:
+ *     ...
+ *     break;
+ * default:
+ *     ...
+ *     break;
+ * }
+ */
+
+string str = "준혁";
+switch (str)
+{
+case "영준":
+	Console.WriteLine("영준이는 24살입니다.");
+	break;
+case "윤창":
+	Console.WriteLine("윤창이는 29살입니다.");
+	break;
+case "준혁":
+	Console.WriteLine("준혁이는 29살입니다.");
+	break;
+default:
+	Console.WriteLine("나이를 알수가 없습니다.");
+	break;
+}
+```
+
+`switch`는 `if ... else if ... else` 구문과 동일한 순서도를 가지므로 그림은 생략한다.
+
+각 분기마다 `break`를 반드시 포함해야 한다는 것을 잊지말자.
