@@ -77,3 +77,7 @@ Console.Write("값을 입력해주세요: ");
 string str = Console.ReadLine();
 Console.WriteLine(str);
 ```
+
+## 배열
+
+배열 설명 추가
