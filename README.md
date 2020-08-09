@@ -103,6 +103,18 @@ int[] arr = new int[3] { 2, 4, 6 };
 
 위 그림처럼 `int[] arr`은 배열 데이터의 메모리를 가리키는 `Reference`이고, `new int[3]`으로 생성된 메모리가 실제 배열 데이터가 저장되는 곳이다.
 
+배열에 할당된 각각의 요소에 접근하려면 `<array name>[<index>]` 형태로 접근해야 한다.
+
+```csharp
+int[] arr = new int [5] { 2, 4, 6, 8, 10 };
+
+// 3번째 요소를 11로 수정
+arr[2] = 11;
+
+// 4번째 요소를 출력
+Console.WriteLine(String.Format("네번째 요소는 {0}", arr[3]));
+```
+
 ### 스택과 힙
 
 C#의 논리적 메모리는 두개로 나뉜다. `Stack`, `Heap`
