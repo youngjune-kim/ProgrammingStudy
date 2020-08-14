@@ -97,8 +97,148 @@ int[] arr = new int[3];
 int[] arr = new int[3] { 2, 4, 6 };
 ```
 
-C#의 메모리는 두개로 나뉜다. `Stack`, `Heap`
+위 코드를 그림으로 표현하면 아래와 같다.
 
-`Stack`은 일반적으로 함수나 반복문과 같이 `{ }` 안에 선언된 변수를 말한다. 이 변수들은 중괄호가 끝나면 메모리에서 삭제된다.
+![array memory architecture](./images/array1.png)
 
-`Heap`은 `new` 키워드로 생성된 메모리이다. 이 메모리는 참조하는 변수가 있지 않으면 `Garbage Collecter (GC)`가 삭제한다.
+위 그림처럼 `int[] arr`은 배열 데이터의 메모리를 가리키는 `Reference`이고, `new int[3]`으로 생성된 메모리가 실제 배열 데이터가 저장되는 곳이다.
+
+배열에 할당된 각각의 요소에 접근하려면 `<array name>[<index>]` 형태로 접근해야 한다.
+
+```csharp
+int[] arr = new int [5] { 2, 4, 6, 8, 10 };
+
+// 3번째 요소를 11로 수정
+arr[2] = 11;
+
+// 4번째 요소를 출력
+Console.WriteLine(String.Format("네번째 요소는 {0}", arr[3]));
+```
+
+### 스택과 힙
+
+C#의 논리적 메모리는 두개로 나뉜다. `Stack`, `Heap`
+
+#### Stack
+
+`Stack`은 일반적으로 함수나 반복문과 같이 `{ }` 안에 선언된 변수를 말한다.
+이 변수들을 `지역변수`라고 한다. 중괄호가 끝나면 메모리에서 삭제된다.
+
+```csharp
+static void Main(string[] args)
+{
+	int num1 = 2;
+	int num2 = 3;
+	Console.WriteLine(num1); // 2
+	Console.WriteLine(num2); // 3
+}
+```
+
+위 코드에서 `지역변수`가 스택에 쌓였다가 삭제되는 과정을 그림으로 표현하면 아래와 같다.
+
+![stack memory architecture](./images/stack1.png)
+
+#### Heap
+
+`Heap`은 `new` 키워드로 생성된 메모리이다. 이 메모리는 참조하는 변수가 있지 않으면 `Garbage Collector (GC)`가 삭제한다.
+
+```csharp
+static void Main(string[] args)
+{
+	int[] arr = new int[3];
+	arr[0] = 2;
+	arr[1] = 4;
+	arr[2] = 6;
+
+	Console.WriteLine(String.Format("첫번째: {0}, 두번째: {1}, 세번째: {2}", arr[0], arr[1], arr[2]));
+}
+```
+
+위 코드에서 `new` 키워드로 생성한 메모리를 참조하는 `Reference`가 더이상 존재하지 않게되어 메모리에서 삭제되는 과정을 그리면 아래와 같다.
+
+![heap memory architecture](./images/heap1.png)
+
+## 조건문
+
+C#의 조건문은 `if`와 `switch` 구문으로 사용할 수 있다.
+
+### if
+
+`if`를 이용하여 분기처리하는 코드는 아래와 같다.
+
+```csharp
+/**
+ * if (<condition>)
+ * {
+ *     ...
+ * }
+ * else if (<condition>)
+ * {
+ *     ...
+ * }
+ * else
+ * {
+ *     ...
+ * }
+ */
+
+int num = 10;
+if (num > 10) // false
+{
+	Console.WriteLine("num은 10보다 큽니다.");
+}
+else if (num == 10) // true
+{
+    Console.WriteLine("num은 10입니다.");
+}
+else
+{
+	Console.WriteLine("num은 10보다 작습니다.");
+}
+```
+
+위 코드를 그림으로 표현하면 아래와 같다.
+
+![if flowchart](./images/if1.png)
+
+### switch
+
+`switch`를 이용하여 분기처리하는 코드는 아래와 같다.
+
+```csharp
+/**
+ * switch (<value>)
+ * {
+ * case <condition>:
+ *     ...
+ *     break;
+ * case <condition>:
+ *     ...
+ *     break;
+ * default:
+ *     ...
+ *     break;
+ * }
+ */
+
+string str = "준혁";
+switch (str)
+{
+case "영준":
+	Console.WriteLine("영준이는 24살입니다.");
+	break;
+case "윤창":
+	Console.WriteLine("윤창이는 29살입니다.");
+	break;
+case "준혁":
+	Console.WriteLine("준혁이는 29살입니다.");
+	break;
+default:
+	Console.WriteLine("나이를 알수가 없습니다.");
+	break;
+}
+```
+
+`switch`는 `if ... else if ... else` 구문과 동일한 순서도를 가지므로 그림은 생략한다.
+
+각 분기마다 `break`를 반드시 포함해야 한다는 것을 잊지말자.
