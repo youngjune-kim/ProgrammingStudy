@@ -1,4 +1,4 @@
-﻿# 프로그래밍 기초 개념 정리
+# 프로그래밍 기초 개념 정리
 
 ## 변수와 타입 
 
@@ -242,3 +242,74 @@ default:
 `switch`는 `if ... else if ... else` 구문과 동일한 순서도를 가지므로 그림은 생략한다.
 
 각 분기마다 `break`를 반드시 포함해야 한다는 것을 잊지말자.
+
+## 문자열
+
+문자열(`string`)은 일반 기본 타입과 달리 문자의 배열로 구성되어있는 타입이다.
+
+```csharp
+string str = "Hello";
+char[] strChars = str.toCharArray();
+
+// 문자열의 첫번째 요소 출력
+Console.WriteLine("str의 첫번째 문자: {0}", strChars[0]);
+
+// 문자 배열로부터 문자열 초기화
+char[] from = new char[] { 'a', 'b', 'c' };
+str = new string(from);
+Console.WriteLine("문자 배열로부터 초기화한 문자열: {0}", str);
+```
+
+문자열 변수는 다양한 함수를 가지고 있는데 이 중 몇가지 자주 사용하는 함수만 소개한다.
+
+```csharp
+string str = "Hello World";
+
+// 문자열을 인덱스로 나누기
+// str.Substring(인덱스, 길이);
+string worldStr = str.Substring(7, 5); // 인덱스 7부터 5개의 문자를 가져온다
+
+// 문자열에서 문자 또는 문자열 찾기
+int whiteSpaceIndex = str.IndexOf(' ');
+string helloStr = str.Substring(0, whiteSpaceIndex);
+Console.WriteLine("Hello str: {0}", helloStr);
+
+// 문자열 구분자로 나누기
+string[] strs = str.Split(' ');
+Console.WriteLine("첫번째: {0}, 두번째: {1}", strs[0], strs[1]);
+```
+
+## 반복문
+
+똑같은 코드를 여러번 반복해서 입력하지 않고 처리하는 구문
+
+### for 
+
+`for`문은 초기화, 조건문, 후처리 단계로 나뉜다.
+
+```csharp
+// for (init; condition; post)
+for (int i = 0; i < 10; i++)
+{
+	Console.WriteLine("인덱스는 {0}입니다.", i);
+}
+```
+
+위의 코드를 설명하면,
+
+ * 초기화: `int` 타입의 변수 i가 0으로 초기화되며 생성
+ * 조건문: i 가 10보다 작을때까지 코드를 반복
+ * 후처리: 코드를 반복할 때마다 i가 1씩 증가
+
+### while
+
+`while`문은 조건문만 가지는 반복문이다.
+
+```csharp
+int i = 0;
+while (i < 10)
+{
+	Console.WriteLine("인덱스는 {0}입니다.", i);
+	i++;
+}
+```
