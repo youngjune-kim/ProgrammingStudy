@@ -8,6 +8,7 @@ int: 정수 (4byte)
 float: 소수점 (4byte)
 double: 소수점(8byte)
 char: 문자(1byte)
+bool: true, flase
 
 ```
 // 변수 선언
@@ -274,8 +275,9 @@ int whiteSpaceIndex = str.IndexOf(' ');
 string helloStr = str.Substring(0, whiteSpaceIndex);
 Console.WriteLine("Hello str: {0}", helloStr);
 
+
 // 문자열 구분자로 나누기
-string[] strs = str.Split(' ');
+string[] strs = str.split(" ");
 Console.WriteLine("첫번째: {0}, 두번째: {1}", strs[0], strs[1]);
 ```
 
@@ -313,6 +315,8 @@ while (i < 10)
 	i++;
 }
 ```
+
+
 ## 객체(Object)
 
 ```
@@ -335,44 +339,43 @@ System.out.printIn(a); // 40
 1. 삼항연산자를 사용하여 코드의 라인이 줄어들었다고 컴파일 속도가 빨라지는 것은 아닙니다.
 2. 삼항연산자를 중복해서 처리할 경우. 가독성이 떨어질 수 있으므로 중복처리는 피하는것이 좋습니다.
 
-list.toArray 복사해서 똑같은 배열로 만듦
-toCharArray 문자 하나하나를 배열로
-타입.ToString 문자열 //.Length
-Reverse 뒤집기
-foreach
-isEmpty
 
+
+
+## 기타 메모
+
+list.toArray 복사해서 똑같은 배열로 만듦
+
+toCharArray 문자 하나하나를 배열로
+
+타입.ToString 문자열 //.Length
+
+Reverse 뒤집기
+
+foreach = for와 같은 반복문 
+
+isEmpty = 객체가 비여있는지 확인
 while(!queue.isEmpty()) = 큐를 더 이상 꺼낼 수 없을 때 까지 반복
 
 컨트롤 쉬프트 f = 정렬
 
 if (p[i].equals(c[i])) p랑 c랑 같은지 비교
-문자나 객체를 비교할 때는 == 가 아닌 equals
-equalsignorecase 대소문자를 구분하지 않음
+문자나 객체를 비교할 때는 == 가 아닌 equals (equalsignorecase 대소문자를 구분하지 않음)
 
 compareTo() = 사전순 정렬
+Arrays.sort(arr, (o1, o2) -> (o2 + o1).compareTo(o1 + o2));
+= (o2 + o1)값과 (o1 + o2) 값 비교 (o2 + o1)값이 더 크면 1을 출력 그러므로 o2는 앞으로 감
 
 split = 해당 문자로 나눔
 String input = 010-8877-1234;
 String maze = input.split(" - ");
 printIn(maze) = 010	8877	1234 출력
  
-Arrays.sort(arr, (o1, o2) -> (o2 + o1).compareTo(o1 + o2));
-= (o2 + o1)값과 (o1 + o2) 값 비교 (o2 + o1)값이 더 크면 1을 출력 그러므로 o2는 앞으로 감
-
 Collections.sort(list); = Arraylist 오름차순 정렬
 Collections.reverse(list); = 정렬 후 뒤집음
 Collections.sort(list, Collections.reverseOrder()); = 내림차순 정렬
 
 알트 쉬프트 a  = 코드 블록 선택 
-
-new로 만든것 = 인스턴스
-
-/** 설명
-
-맴버 변수 (핸드폰 사진)
-맴버 함수 (핸드폰 사진)
-static  (핸드폰 사진)
 
 System.out.println(String.format("%.3f", array[i])); //   소수점 3번째 자리까지 출력
 Integer.parseInt = int형 변환
@@ -383,12 +386,11 @@ map.put(name, map.getOrDefault(name, 0)+1)	//    key값이 같으면 + 1 (중복
 int max = Math.max(a, b);     //   최대값 출력
 Math.abs(num) 		//    절대값 num이 나옴
 
-input = " Hello world a "
-String inputtrim = input.trim();    =    "Hello world a"  =  공백을 제거해서 문자열 출력	
+input = "  Hello world a  "
+String inputtrim = input.trim();  을 하면    "Hello world a"  =  공백을 제거해서 문자열 출력	
 
 str = 12345
 str.charAt(Index) - '0' = Index값에 따라 int 형 1, int 형 2 ... 출력
-
 
 String[] arr= {"1", "2", "3"};
 int[] nums = Arrays.stream(arr).mapToInt(Integer::parseInt).toArray();	// string 배열을 int형으로 변환
@@ -396,28 +398,20 @@ int[] nums = Arrays.stream(arr).mapToInt(Integer::parseInt).toArray();	// string
 int[] nums = Arrays.stream(arr).mapToInt(Integer::parseInt).sorted().toArray()
 정렬까지 가능
 
-
-
-
 Arrays.fill(arr, 1);	 //     arr배열의 모든 값을 1로 바꿔버림
 Arrays.fill(arr, 3, 7,-1);  // 3부터 6 index 까지만 -1로 채움
 
 이중 for문 하나만 탈출할 때는 break 둘다 탈출할 때는 break loop
 
-
 배열의 크기가 크고, 배열의 요소들의 순서가 난수처럼 들쑥날쑥일때는 ParallelSort가 빠르다
 큰 데이터 처리에는 ParallelSort 작은 데이터 처리에는 sort
 
-
 String str = bufferedReader.readLine().replace(".", "z")  //  ab.c가 abzc로 변경됨
-
 
 map.containsKey(key)
 맵에서 인자로 보낸 키가 있으면 true 없으면 false를 반환
 
-
 map.containsValue(value)
 맵에서 인자로 보낸 값이 있으면 true 없으면 false를 반환
-
 
 startsWith/endsWith (특정 문자로 시작하거나 끝나는지 체크)
