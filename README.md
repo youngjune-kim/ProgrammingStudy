@@ -415,3 +415,10 @@ map.containsValue(value)
 맵에서 인자로 보낸 값이 있으면 true 없으면 false를 반환
 
 startsWith/endsWith (특정 문자로 시작하거나 끝나는지 체크)
+
+List<Point> list = new ArrayList<>(); 정렬 하는 방법
+Collections.sort(list, (Point p1, Point p2) -> p1.y > p2.y ? 1 : -1);
+
+
+list.stream().mapToInt(Integer::intValue).sum();   //리스트 int값 모두 합하기
+int sum = IntStream.of(arr).sum();                  // 배열 int값 모두 합하기
