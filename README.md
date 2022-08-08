@@ -366,14 +366,18 @@ compareTo() = 사전순 정렬
 Arrays.sort(arr, (o1, o2) -> (o2 + o1).compareTo(o1 + o2));
 = (o2 + o1)값과 (o1 + o2) 값 비교 (o2 + o1)값이 더 크면 1을 출력 그러므로 o2는 앞으로 감
 
+Collections.sort(list); = Arraylist 오름차순 정렬
+Collections.reverse(list); = 정렬 후 뒤집음
+Collections.sort(list, Collections.reverseOrder()); = 내림차순 정렬
+
+
+
+
 split = 해당 문자로 나눔
 String input = 010-8877-1234;
 String maze = input.split(" - ");
 printIn(maze) = 010	8877	1234 출력
  
-Collections.sort(list); = Arraylist 오름차순 정렬
-Collections.reverse(list); = 정렬 후 뒤집음
-Collections.sort(list, Collections.reverseOrder()); = 내림차순 정렬
 
 알트 쉬프트 a  = 코드 블록 선택 
 
@@ -419,6 +423,49 @@ startsWith/endsWith (특정 문자로 시작하거나 끝나는지 체크)
 List<Point> list = new ArrayList<>(); 정렬 하는 방법
 Collections.sort(list, (Point p1, Point p2) -> p1.y > p2.y ? 1 : -1);
 
+Collections.sort(list, (Point p1, Point p2) -> {
+            if(p1.x == p2.x){
+                return p1.y - p2.y;
+            } else {
+                return p1.x - p2.x;
+            }
+        });
+
+
+1차원 배열 문자열 기준 정렬
+Arrays.sort(arr, new Comparator<String>() {
+            public int compare(String e1, String e2) {
+                if(e1.length() == e2.length()) {
+                    return e1.compareTo(e2);
+                }else {
+                    return e1.length() - e2.length();
+                }
+            }
+});
+
+
+2차원 배열 x 기준 정렬
+Arrays.sort(arr, (e1, e2) -> {
+	if(e1[0] == e2[0]){
+		return e1[1] - e2[1];
+	}else{
+		return e1[0] - e2[0];
+	}
+});
+
+
+
+
+
+
+
 
 list.stream().mapToInt(Integer::intValue).sum();   //리스트 int값 모두 합하기
 int sum = IntStream.of(arr).sum();                  // 배열 int값 모두 합하기
+
+
+
+
+
+
+
