@@ -422,3 +422,8 @@ Collections.sort(list, (Point p1, Point p2) -> p1.y > p2.y ? 1 : -1);
 
 list.stream().mapToInt(Integer::intValue).sum();   //리스트 int값 모두 합하기
 int sum = IntStream.of(arr).sum();                  // 배열 int값 모두 합하기
+
+문자열 char 배열 넣기
+i = "str"
+char[] char_arr = String.valueOf(i).toCharArray();
+char_arr[0] = "s", char_arr[1] = "t", char_arr[2] = "r"  
