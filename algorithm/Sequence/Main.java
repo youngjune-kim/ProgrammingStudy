@@ -27,7 +27,7 @@ public class Main {
         }
         Collections.sort(list, Collections.reverseOrder());
         answer = list.get(0);
-
+ 
         System.out.println(answer);
     }
 }
