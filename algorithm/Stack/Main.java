@@ -42,7 +42,7 @@ public class Main {
                         System.out.println(stack.pop());
                     }
                 }
-            }
+            } 
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("Failed to input keyboard");
